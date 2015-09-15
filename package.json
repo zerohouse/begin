@@ -1,5 +1,5 @@
 {
-  "name": "park",
+  "name": "begin",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zerohouse/park.git"
+    "url": "git+https://github.com/zerohouse/begin.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/zerohouse/park/issues"
+    "url": "https://github.com/zerohouse/begin/issues"
   },
-  "homepage": "https://github.com/zerohouse/park#readme",
+  "homepage": "https://github.com/zerohouse/begin#readme",
   "dependencies": {
     "angular": "^1.4.4",
     "angular-animate": "^1.4.5",
