@@ -13,7 +13,12 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('main', {
             url: "/",
             controller: "main",
-            templateUrl: "/dist/main/main.html"
+            templateUrl: "/dist/pages/main/main.html"
+        })
+        .state('questions', {
+            url: "/questions",
+            controller: "questions",
+            templateUrl: "/dist/pages/questions/questions.html"
         });
 
 });
