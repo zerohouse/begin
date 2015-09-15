@@ -1,6 +1,6 @@
 var path = '/update/deploy',
     port = 7777,
-    secret = 'abc',
+    secret = 'lsadfjp24dfgFG',
     logfile = 'push.log',
     cmd = [
         'git pull',
