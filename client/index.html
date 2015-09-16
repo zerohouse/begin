@@ -27,7 +27,7 @@
                     <a>오늘의 인연</a>
                 </li>
                 <li>
-                    <a ui-sref="questions">내일의 질문</a>
+                    <a ui-sref="questions">내일의 공감</a>
                 </li>
                 <li>
                     <a>이용 안내</a>
@@ -35,11 +35,25 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="http://builtwithbootstrap.com/" target="_blank">회원가입</a></li>
-                <li><a href="https://wrapbootstrap.com/?ref=bsw" target="_blank">로그인</a></li>
+                <li><a>회원가입</a></li>
+                <li><a popup="login">로그인</a></li>
             </ul>
 
         </div>
+    </div>
+</div>
+
+<div class="alert-window fade-in-out" ng-controller="alert" ng-show="showing">
+    <div class="message" ng-click="showing=!showing">
+        <div ng-class="{'success':alert.success,'danger':!alert.success}">
+            <div ng-bind-html="alert.alert"></div>
+            <!--<small>{{alert.date.toString()}}</small>-->
+        </div>
+    </div>
+</div>
+<div class="popup" ng-show="popup.isShow()" ng-click="popup.hide()" ng-controller="popup">
+    <div ng-class="classes[popup.getState()]" ng-click="$event.stopPropagation()">
+        <ng-include src="url[popup.getState()]"></ng-include>
     </div>
 </div>
 

@@ -10,6 +10,6 @@ require('./utils/util.js')();
 require('./utils/parse.js');
 require('./utils/upload.js')(app);
 require('./utils/store.js').registerApp(app);
-require('./route/route.js')(app);
+require('./route.js')(app);
 
 module.exports = app;
