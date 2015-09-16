@@ -1,12 +1,13 @@
-<div>
-    <div class="value">{{question.head}}</div>
-    <div class="value">{{question.description}}</div>
-    <div>
+<div class="panel-body">
+    <div class="img"></div>
+    <h3 class="value">{{question.head}}</h3>
+
+    <p class="value">{{question.description}}</p>
+
+    <div class="info">
         <likebox like-id="question._id"></likebox>
         <reply-header parent-id="question._id"></reply-header>
-        <div class="value">{{question.date.toDateString()}}</div>
+        <span class="date">{{question.date.toDateString()}}</span>
     </div>
-</div>
-<div>
-    <user-info user="question.writer"></user-info>
+
 </div>

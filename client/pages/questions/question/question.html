@@ -1,0 +1,40 @@
+<header>
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="jeju-m">{{question.head||"질문"}}</h1>
+
+            <p class="jeju-m">
+                {{question.body}}
+            </p>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <ul class="list-group">
+                <li class="list-group-item answer" ng-repeat="answer in answers"><i
+                        class="fa fa-check">{{answer}}</i>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <div>
+                다른 사람들은 어떻게 생각할까?
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h3>의견 나누기</h3>
+
+            <replies reply-id="question._id">
+
+
+            </replies>
+
+        </div>
+    </div>
+</div>

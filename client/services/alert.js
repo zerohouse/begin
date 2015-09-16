@@ -13,6 +13,10 @@
                 scope.showing = false;
             }, duration);
             scope.alert = {alert: message, date: new Date(), success: success};
+            scope.showing = true;
+            if (!scope.$$phase) {
+                scope.$apply();
+            }
         };
     });
 })();

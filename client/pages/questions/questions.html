@@ -1,10 +1,23 @@
-<div class="jumbotron">
-    <div class="container">
-        <h4>이번주의 공감?</h4>
-        <h5>2015년 9월 둘째주</h5>
-    </div>
-</div>
-<div class="container">
-    <question-header question="question" ng-repeat="question in questions"></question-header>
+<header>
+    <div class="jumbotron">
+        <div class="container">
+            <span class="bar"></span>
 
+            <h1 class="jeju-m">공감 질문.
+                <small>9월 셋째주</small>
+            </h1>
+
+            <p class="jeju-m">
+                이 것만은 같은 생각이었으면 하는 부분이 있나요?<br>
+                공감 질문을 등록하시고 인연을 만나세요.
+            </p>
+        </div>
+    </div>
+</header>
+
+
+<div class="container">
+    <div class="btn btn-primary btn-lg" ui-sref="questionEdit">공감 쓰기</div>
+    <question-header question="question" ng-repeat="question in questions"
+                     ui-sref="question({id:question.id})"></question-header>
 </div>

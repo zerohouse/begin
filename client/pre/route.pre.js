@@ -19,6 +19,16 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: "/questions",
             controller: "questions",
             templateUrl: "/dist/pages/questions/questions.html"
+        })
+        .state('question', {
+            url: "/question/:id",
+            controller: "question",
+            templateUrl: "/dist/pages/questions/question/question.html"
+        })
+        .state('questionEdit', {
+            url: "/questions/edit",
+            controller: "question.edit",
+            templateUrl: "/dist/pages/questions/edit/edit.html"
         });
 
 });

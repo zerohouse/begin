@@ -1,0 +1,12 @@
+<div class="container">
+
+    <input class="form-control" placeholder="제목">
+    <textarea class="form-control" placeholder="내용"></textarea>
+
+    <div ng-repeat="answer in answers">{{answer}} <i class="fa fa-times" ng-click="answers.remove(answer)"></i></div>
+    <div class="input-group">
+        <input ng-model="answer" class="form-control" placeholder="답변" ng-enter="addAnswer(answer)">
+
+        <div class="input-group-addon" ng-click="addAnswer(answer)">답변 추가</div>
+    </div>
+</div>
