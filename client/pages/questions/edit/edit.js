@@ -12,6 +12,7 @@ app.controller('question.edit', function ($scope, alert) {
             return;
         }
         $scope.answers.push(answer);
+        $scope.answer = '';
     }
 
 });

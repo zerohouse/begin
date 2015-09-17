@@ -1,12 +1,37 @@
+<header>
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="jeju-m">{{question.head||"제목"}}</h1>
+
+            <p class="jeju-m">
+                {{question.body}}
+            </p>
+        </div>
+    </div>
+</header>
+
+
 <div class="container">
+    <div class="panel-body">
 
-    <input class="form-control" placeholder="제목">
-    <textarea class="form-control" placeholder="내용"></textarea>
+        <h3>질문</h3>
+        <input class="form-control" placeholder="제목" ng-model="question.head">
+        <textarea class="form-control" placeholder="내용" ng-model="question.body"></textarea>
 
-    <div ng-repeat="answer in answers">{{answer}} <i class="fa fa-times" ng-click="answers.remove(answer)"></i></div>
-    <div class="input-group">
-        <input ng-model="answer" class="form-control" placeholder="답변" ng-enter="addAnswer(answer)">
+        <h3>답변</h3>
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="answer in answers">
+                <i class="fa fa-check"></i>
+                {{answer}}
+                <i class="fa fa-times" ng-click="answers.remove(answer)"></i>
+            </li>
 
-        <div class="input-group-addon" ng-click="addAnswer(answer)">답변 추가</div>
+            <li class="input-group">
+                <input ng-model="answer" class="form-control" placeholder="답변" ng-enter="addAnswer(answer)">
+
+                <div class="input-group-addon" ng-click="addAnswer(answer)">답변 추가</div>
+            </li>
+        </ul>
+        <div class="btn btn-primary btn-lg">작성완료</div>
     </div>
 </div>
