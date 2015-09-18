@@ -13,7 +13,10 @@ module.exports = function (app) {
 
             return Date.now() + ran(5);
         },
-        onFileUploadStart: function (file) {
+        limits: {fileSize: 1 * 1024 * 1024}, // limit To 1MB
+        onFileUploadStart: function (file, req) {
+            if (file.mimetype !== 'image/png' && file.mimetype !== 'image/jpg' && file.mimetype !== 'image/jpeg' && file.mimetype !== 'image/gif')
+                return false;
         },
         onFileUploadComplete: function (file) {
         }

@@ -7,7 +7,7 @@ app.use(function (req, res, next) {
 });
 
 require('./utils/util.js')();
-require('./utils/parse.js');
+require('./utils/parse.js')(app);
 require('./utils/upload.js')(app);
 require('./utils/store.js').registerApp(app);
 require('./route.js')(app);

@@ -1,4 +1,3 @@
 app.directive('userInfo', function () {
-
-    return {}
+    return {};
 });

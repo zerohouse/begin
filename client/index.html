@@ -9,12 +9,12 @@
     <link rel="icon" type="image/png" href="/dist/favicon.ico">
     <title>Begin@</title>
 </head>
-<body>
+<body ng-controller="body">
 
-<div class="navbar navbar-default navbar-fixed-top navbar-transparent">
+<div class="navbar navbar-default navbar-fixed-top navbar-transparent" affix>
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand">Begin@</a>
+            <a class="navbar-brand">Begin.at</a>
             <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -35,8 +35,10 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a ui-sref="register">회원가입</a></li>
-                <li><a popup="login">로그인</a></li>
+                <li ng-show="user.logged"><a ui-sref="profile">프로필수정</a></li>
+                <li ng-show="user.logged"><a ng-click="logout()">로그아웃</a></li>
+                <li ng-show="!user.logged"><a popup="user,register">회원가입</a></li>
+                <li ng-show="!user.logged"><a popup="user,login">로그인</a></li>
             </ul>
 
         </div>
@@ -59,11 +61,13 @@
 
 <div ui-view></div>
 
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script src="/node_modules/angular/angular.js"></script>
 <script src="/node_modules/angular-sanitize/angular-sanitize.min.js"></script>
 <script src="/node_modules/angular-animate/angular-animate.min.js"></script>
 <script src="/node_modules/angular-ui-router/build/angular-ui-router.min.js"></script>
 <script src="/node_modules/angular-ui-bootstrap/ui-bootstrap.min.js"></script>
+<script src="/node_modules/ng-file-upload/dist/ng-file-upload.min.js"></script>
 <script src="/dist/js.js"></script>
 </body>
 </html>

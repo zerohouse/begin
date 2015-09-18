@@ -1,0 +1,17 @@
+<header>
+    <div class="jumbotron">
+        <div class="container">
+            <h4>My Page</h4>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <ul class="nav nav-tabs nav-justified">
+        <li ng-class="{active:state.current.name=='profile.history'}" ui-sref="profile.history"><a>생각</a></li>
+        <li ng-class="{active:state.current.name=='profile.profile'}" ui-sref="profile.profile"><a>프로필</a></li>
+        <li ng-class="{active:state.current.name=='profile.photo'}" ui-sref="profile.photo"><a>사진</a></li>
+        <li ng-class="{active:state.current.name=='profile.basic'}" ui-sref="profile.basic"><a>인증</a></li>
+    </ul>
+</div>
+<div ui-view class="profiles bottom-space"></div>

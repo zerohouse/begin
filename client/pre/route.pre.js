@@ -15,11 +15,28 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             controller: "main",
             templateUrl: "/dist/pages/main/main.html"
         })
-        .state('register', {
-            url: "/register",
-            controller: "register",
-            templateUrl: "/dist/pages/register/register.html"
+        .state('profile', {
+            url: "/profile",
+            controller: 'profile',
+            templateUrl: "/dist/pages/profile/profile.html"
         })
+        .state('profile.basic', {
+            url: "/basic",
+            templateUrl: "/dist/pages/profile/basic/basic.html"
+        })
+        .state('profile.photo', {
+            url: "/photo",
+            templateUrl: "/dist/pages/profile/photo/photo.html"
+        })
+        .state('profile.profile', {
+            url: "/profile",
+            templateUrl: "/dist/pages/profile/profile/profile.html"
+        })
+        .state('profile.history', {
+            url: "/history",
+            templateUrl: "/dist/pages/profile/history/history.html"
+        })
+
         .state('questions', {
             url: "/questions",
             controller: "questions",

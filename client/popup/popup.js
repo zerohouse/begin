@@ -4,6 +4,7 @@
     app.factory('popup', function () {
         var popup = {};
         pop = function (val, param) {
+            console.log(val, param);
             popup.show = true;
             popup.state = val;
             scope.param = param;
@@ -37,10 +38,10 @@
     app.controller('popup', function ($scope, popup) {
         scope = $scope;
         $scope.url = {};
-        $scope.url.login = '/dist/popup/login/login.html';
+        $scope.url.user = '/dist/popup/user/user.html';
 
         $scope.classes = {};
-        $scope.classes.login = 'window-s';
+        $scope.classes.user = 'window-s';
         $scope.popup = popup;
     });
 

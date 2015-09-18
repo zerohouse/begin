@@ -1,0 +1,16 @@
+<div class="form-control" ng-class="{focused:focus}">
+    <div class="btn btn-sm btn-success" ng-repeat="keyword in ngModel">
+        {{keyword}}
+        <i class="fa fa-times" ng-click="ngModel.remove(keyword)"></i>
+    </div>
+    <div class="input-box">
+        <input type="text" ng-focus="focus=true" ng-blur="hide()" placeholder="{{placeholder}}"
+               ng-model="keyword" ng-keydown="keypress($event)">
+        <ul class="list-group" ng-show="focus && filtered.length>0">
+            <li ng-repeat="value in (filtered = (values | orderBy:'-hit'))" class="list-group-item" ng-click="add()"
+                ng-class="{active:selected==filtered.indexOf(value)}" ng-mouseover="select(filtered.indexOf(value))">
+                {{value.keyword}}
+            </li>
+        </ul>
+    </div>
+</div>

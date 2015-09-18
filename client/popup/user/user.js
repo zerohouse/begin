@@ -1,17 +1,27 @@
-app.controller('login', function ($scope, req, alert, popup, user) {
+app.controller('user', function ($scope, req, alert, popup, user) {
 
     $scope.user = user;
 
     $scope.mailRegex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
 
+    $scope.send = function () {
+        if ($scope.param == 'register') {
+            $scope.register();
+            return;
+        }
+        $scope.login();
+    };
+
     $scope.register = function () {
+        console.log(user);
         req.post('/api/user', user).success(function (res) {
-            if (res.error) {
+            if (res.err) {
+                console.log(res.err);
                 alert("이메일 형식이 맞지 않거나 이미 가입한 이메일입니다.");
                 return;
             }
             alert("가입되었습니다.");
-            popup('login', true);
+            popup('user', 'login');
         });
     };
 
@@ -22,8 +32,17 @@ app.controller('login', function ($scope, req, alert, popup, user) {
                 return;
             }
             alert("로그인 되었습니다.");
-            location.reload();
+            angular.copy(res.result, user);
+            user.logged = true;
+            //$rootScope.$apply();
+            popup.hide();
         });
     };
+
+    var state = $scope.state = {};
+    state.register = {};
+    state.login = {};
+    state.register.btn = "회원가입";
+    state.login.btn = "로그인";
 
 });

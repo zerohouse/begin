@@ -1,0 +1,69 @@
+<div class="container">
+    <div class="row bordered">
+        <h3>프로필 </h3>
+        <h4>
+            <small>매칭시 상대에게 공개됩니다.</small>
+        </h4>
+    </div>
+    <div class="row bordered">
+        <div class="col-sm-3 hide-when-sm">
+            <div class="title">
+                자기소개
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <textarea ng-model="user.profile.introduce" placeholder="자기소개" maxlength="400"
+                      class="form-control"></textarea>
+        </div>
+    </div>
+
+    <div class="row bordered">
+        <div class="col-sm-3 hide-when-sm">
+            <div class="title">
+                성격
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <autocomplete ng-model="user.profile.character" type="character" placeholder="성격"></autocomplete>
+        </div>
+    </div>
+
+    <div class="row bordered">
+        <div class="col-sm-3 hide-when-sm">
+            <div class="title">
+                취미
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <autocomplete type="hobby" ng-model="user.profile.hobby" placeholder="취미"></autocomplete>
+        </div>
+    </div>
+
+    <div class="row bordered">
+        <div class="col-sm-3 hide-when-sm">
+            <div class="title">
+                좋아하는 것
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <autocomplete type="likes" ng-model="user.profile.likes" placeholder="좋아하는 것"></autocomplete>
+        </div>
+    </div>
+
+    <div class="row bordered">
+        <div class="col-sm-3 hide-when-sm">
+            <div class="title">
+                싫어하는 것
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <autocomplete type="dislikes" ng-model="user.profile.dislikes" placeholder="싫어하는 것"></autocomplete>
+        </div>
+    </div>
+
+    <div class="row centered">
+        <div class="panel-body">
+            <div class="btn btn-success btn-lg" ng-click="save()">저장하기</div>
+        </div>
+    </div>
+</div>

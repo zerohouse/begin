@@ -1,0 +1,13 @@
+<div ng-controller="user">
+    <div class="panel-body">
+        <h1>Begin.at</h1>
+        <input class="form-control" placeholder="이메일" ng-model="user.email" ng-regex="mailRegex"
+               message="메일형식이 잘못되었습니다.">
+        <input class="form-control" type="password" placeholder="암호" ng-model="user.password" ng-enter="login()">
+
+        <div class="btn btn-primary" ng-click="send()">{{state[param].btn}}</div>
+        <div class="desc" ng-show="param=='register'">이미 아이디가 있으신가요? <span ng-click="param='login'">로그인</span></div>
+        <div class="desc" ng-show="param=='login'">아직 가입하지 않으셨나요? <span ng-click="param='register'">회원가입</span></div>
+        <div class="desc">비밀번호를 잊으셨나요?</div>
+    </div>
+</div>

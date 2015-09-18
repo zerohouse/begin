@@ -6,7 +6,10 @@
   top: 0;
   z-index: 3000;
   .window-s {
-    padding: 20px 40px 40px 40px;
+    background-color: #ccc;
+    box-shadow: 2px 2px 2px silver;
+    border-radius: 5px;
+    padding: 20px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -16,8 +19,22 @@
     width: 400px;
     max-width: 100%;
     text-align: center;
+    background-image: url('http://www.heise.de/imagine/vwpuiRX3bfJ79zLYyufVEzlRi8s/gallery/Liebespaar.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    .desc {
+      margin-top: 10px;
+      font-size: 80%;
+      span {
+        color: #0093FF;
+        font-weight: 900;
+      }
+    }
   }
   .window-m {
+    background-color: white;
+    border-radius: 5px;
     padding: 20px;
     position: absolute;
     top: 50%;
@@ -28,5 +45,13 @@
     width: 600px;
     max-width: 100%;
     text-align: center;
+  }
+
+  input.form-control {
+    margin: 10px 0;
+  }
+  .btn {
+    width: 100%;
+    margin: 10px 0;
   }
 }

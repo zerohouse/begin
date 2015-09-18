@@ -3,5 +3,7 @@ module.exports = function (app) {
         res.send('weaasfwweef');
     });
     require('./likes/likes.js')(app);
+    require('./user/user.js')(app);
     require('./reply/reply.js')(app);
+    require('./keywords/keywords.js')(app);
 };
