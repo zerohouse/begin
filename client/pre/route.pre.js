@@ -16,7 +16,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: "/dist/pages/main/main.html"
         })
         .state('profile', {
-            url: "/profile",
+            abstract: true,
+            url: '/profile',
             controller: 'profile',
             templateUrl: "/dist/pages/profile/profile.html"
         })
@@ -29,7 +30,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: "/dist/pages/profile/photo/photo.html"
         })
         .state('profile.profile', {
-            url: "/profile",
+            url: "/",
             templateUrl: "/dist/pages/profile/profile/profile.html"
         })
         .state('profile.history', {
@@ -48,7 +49,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: "/dist/pages/questions/question/question.html"
         })
         .state('questionEdit', {
-            url: "/questions/edit",
+            url: "/questions/edit/:id",
             controller: "question.edit",
             templateUrl: "/dist/pages/questions/edit/edit.html"
         });

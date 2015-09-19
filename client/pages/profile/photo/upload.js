@@ -14,13 +14,16 @@ app.controller('upload', function ($scope, Upload, user, req) {
             file: file,
             method: 'POST'
         }).progress(function (evt) {
-            console.log('progress: ' + parseInt(100.0 * evt.loaded / evt.total) + '% file :' + evt.config.file.name);
+            $scope.uploading = true;
+            $scope.uploaded = parseInt(100.0 * evt.loaded / evt.total);
         }).success(function (data, status, headers, config) {
+            $scope.uploading = false;
             angular.copy(data, user);
+            user.logged = true;
         }).error(function (data, status, headers, config) {
-            // handle error
+            $scope.uploading = false;
         });
-    })
+    });
 
 
     $scope.remove = function (photo) {

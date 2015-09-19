@@ -13,7 +13,6 @@ app.controller('user', function ($scope, req, alert, popup, user) {
     };
 
     $scope.register = function () {
-        console.log(user);
         req.post('/api/user', user).success(function (res) {
             if (res.err) {
                 console.log(res.err);

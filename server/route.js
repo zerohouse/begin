@@ -6,4 +6,5 @@ module.exports = function (app) {
     require('./user/user.js')(app);
     require('./reply/reply.js')(app);
     require('./keywords/keywords.js')(app);
+    require('./question/question.js')(app);
 };

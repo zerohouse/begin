@@ -1,11 +1,18 @@
-<header>
+<header ng-style="{'background-image':'url(/dist/uploads/'+question.cover+')'}">
     <div class="jumbotron">
         <div class="container">
             <h1 class="jeju-m">{{question.head||"제목"}}</h1>
 
-            <p class="jeju-m">
-                {{question.body}}
+            <p class="jeju-m" maxlength="80" ng-bind-html="question.body.newLine()">
             </p>
+
+            <div class="btn btn-primary btn-sm" ng-click="next()">다른 커버</div>
+            <div class="btn btn-primary btn-sm" ngf-select ng-model="cover">커버이미지 업로드</div>
+            <div class="progress" ng-show="uploading">
+                <div class="progress-bar" ng-style="{width: uploaded+'%'};">
+                    <span class="sr-only">{{uploaded}}%</span>
+                </div>
+            </div>
         </div>
     </div>
 </header>
@@ -14,24 +21,29 @@
 <div class="container">
     <div class="panel-body">
 
-        <h3>질문</h3>
-        <input class="form-control" placeholder="제목" ng-model="question.head">
-        <textarea class="form-control" placeholder="내용" ng-model="question.body"></textarea>
+        <div class="row bordered">
+            <h3>질문</h3>
+            <input class="form-control" placeholder="제목" ng-model="question.head">
+            <textarea maxlength="80" class="form-control" placeholder="내용" ng-model="question.body"></textarea>
+        </div>
+        <div class="row bordered">
+            <h3>답변</h3>
 
-        <h3>답변</h3>
-        <ul class="list-group">
-            <li class="list-group-item" ng-repeat="answer in answers">
-                <i class="fa fa-check"></i>
-                {{answer}}
-                <i class="fa fa-times" ng-click="answers.remove(answer)"></i>
-            </li>
+            <div class="input-group" ng-repeat="answer in question.answers">
+                <input class="form-control" ng-model="answer.text">
 
-            <li class="input-group">
+                <div class="input-group-addon" ng-click="question.answers.remove(answer)"><i class="fa fa-times"></i>
+                </div>
+            </div>
+            <div class="input-group">
                 <input ng-model="answer" class="form-control" placeholder="답변" ng-enter="addAnswer(answer)">
 
                 <div class="input-group-addon" ng-click="addAnswer(answer)">답변 추가</div>
-            </li>
-        </ul>
-        <div class="btn btn-primary btn-lg">작성완료</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="btn btn-primary" ng-click="tempSave()">임시저장</div>
+            <div class="btn btn-primary">작성완료</div>
+        </div>
     </div>
 </div>

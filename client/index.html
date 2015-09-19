@@ -35,7 +35,7 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li ng-show="user.logged"><a ui-sref="profile">프로필수정</a></li>
+                <li ng-show="user.logged"><a ui-sref="profile.profile">프로필수정</a></li>
                 <li ng-show="user.logged"><a ng-click="logout()">로그아웃</a></li>
                 <li ng-show="!user.logged"><a popup="user,register">회원가입</a></li>
                 <li ng-show="!user.logged"><a popup="user,login">로그인</a></li>
