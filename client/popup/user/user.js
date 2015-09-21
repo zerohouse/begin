@@ -26,8 +26,8 @@ app.controller('user', function ($scope, req, alert, popup, user) {
 
     $scope.login = function () {
         req.post('/api/user/login', {email: user.email, password: user.password}).success(function (res) {
-            if (res.error) {
-                alert(res.error);
+            if (!res.result) {
+                alert("유효하지 않은 로그인 정보입니다.");
                 return;
             }
             alert("로그인 되었습니다.");

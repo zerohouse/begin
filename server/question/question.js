@@ -5,7 +5,9 @@ var Question = db.model('question', db.Schema({
     body: String,
     answers: Array,
     cover: String,
-    Date: Date
+    date: {type: Date, default: Date.now},
+    likes: [],
+    like: Number
 }));
 var Temp = db.model('questionTemp', db.Schema({
     writer: {type: String, index: true, unique: true},
@@ -27,17 +29,9 @@ function logged(req, res) {
 }
 
 module.exports = function (app) {
-    app.post('/api/question/temp', function (req, res) {
-        if (!logged(req, res))
-            return;
-        Temp.update({writer: req.session.user.email}, req.passed, {upsert: true}, function (err, result) {
-            res.send({err: err, result: result});
-        });
-    });
-
     app.get('/api/question', function (req, res) {
-        if (req.passed.id) {
-            Question.findOne({writer: req.session.user.email}, function (err, result) {
+        if (req.passed._id) {
+            Question.findOne({_id: req.passed._id}, function (err, result) {
                 res.send({err: err, result: result});
             });
             return;
@@ -45,6 +39,42 @@ module.exports = function (app) {
         if (!logged(req, res))
             return;
         Temp.findOne({writer: req.session.user.email}, function (err, result) {
+            res.send({err: err, result: result});
+        });
+    });
+
+
+    app.post('/api/question/temp', function (req, res) {
+        if (!logged(req, res))
+            return;
+        req.passed._id = undefined;
+        Temp.update({writer: req.session.user.email}, req.passed, {upsert: true}, function (err, result) {
+            res.send({err: err, result: result});
+        });
+    });
+
+    app.post('/api/question', function (req, res) {
+        if (!logged(req, res))
+            return;
+        if (!req.passed.save) {
+            Temp.update({
+                writer: req.session.user.email
+            }, req.passed, {}, function (err, result) {
+                res.send({err: err, result: result});
+            });
+            return;
+        }
+        delete req.passed._id;
+        var q = new Question(req.passed);
+        q.save(function (err) {
+            res.send({err: err, result: q});
+        });
+    });
+
+    app.post('/api/question/update', function (req, res) {
+        Question.update({
+            _id: req.passed._id
+        }, req.passed, {}, function (err, result) {
             res.send({err: err, result: result});
         });
     });
@@ -58,5 +88,12 @@ module.exports = function (app) {
             logger.debug(e);
         }
     });
+
+    app.get('/api/questions', function (req, res) {
+        Question.find().sort({'date': -1}).limit(req.passed.limit).skip(req.passed.skip).exec(function (err, results) {
+            res.send(results);
+        });
+    });
+
 
 };

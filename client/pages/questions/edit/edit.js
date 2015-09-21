@@ -5,7 +5,7 @@ app.controller('question.edit', function ($scope, alert, Upload, req, $state, $s
 
 
     $scope.get = function () {
-        req.get('/api/question', {id: $stateParams.id}).success(function (res) {
+        req.get('/api/question', {_id: $stateParams.id}).success(function (res) {
             if (res.result)
                 angular.copy(res.result, $scope.question);
         });
@@ -21,10 +21,12 @@ app.controller('question.edit', function ($scope, alert, Upload, req, $state, $s
     };
 
     $scope.save = function () {
+        $scope.question.save = true;
         req.post('/api/question', $scope.question).success(function (res) {
-            if (!res.err)
-                alert('저장 되었습니다.');
-            $state.go('question', {id: res.id});
+            if (res.err)
+                return;
+            alert('저장 되었습니다.');
+            $state.go('question', {id: res.result._id});
         });
     };
 

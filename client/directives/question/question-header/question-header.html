@@ -1,11 +1,11 @@
 <div class="panel-body">
     <!--<div class="img"></div>-->
-    <h3 class="value">{{question.head}}</h3>
+    <h3 class="value" ui-sref="question({id:question._id})">{{question.head}}</h3>
 
     <p class="value">{{question.description}}</p>
 
     <div class="info">
-        <likebox like-id="question._id"></likebox>
+        <span ng-click="like()"><i class="fa fa-heart-o"></i> {{question.likes.length}}</span>
         <reply-header parent-id="question._id"></reply-header>
         <span class="date">{{question.date.toDateString()}}</span>
     </div>
